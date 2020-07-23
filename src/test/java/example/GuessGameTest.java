@@ -1,6 +1,5 @@
 package example;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -19,10 +18,13 @@ import static org.mockito.Mockito.when;
  */
 public class GuessGameTest  {
     AnswerGenerater answerGenerater;
+    GuessGame guessGame;
+
     @BeforeEach
     void initAnswerGenerater(){
         answerGenerater = Mockito.mock(AnswerGenerater.class);
         when(answerGenerater.generate()).thenReturn("1234");
+        guessGame = new GuessGame(answerGenerater);
     }
 
     @Test
@@ -30,18 +32,15 @@ public class GuessGameTest  {
         //given
         String guessNumber = "1234";
         //when
-        GuessGame guessGame = new GuessGame(answerGenerater);
         String actual = guessGame.guess(guessNumber);
         //then
-        String expected = "4A0B";
-        assertEquals(expected,actual);
+        assertEquals("4A0B",actual);
     }
 
     @Test
     void should_return_2A2B_when_guessGame_given_answer_1234_and_guess_number_1324() {
         //given
         String guessNumber = "1324";
-        GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
@@ -52,7 +51,6 @@ public class GuessGameTest  {
     void should_return_1A1B_when_guessGame_given_answer_1234_and_guess_number_1526() {
         //given
         String guessNumber = "1526";
-        GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
@@ -63,7 +61,6 @@ public class GuessGameTest  {
     void should_return_0A4B_when_guessGame_given_answer_1234_and_guess_number_2143() {
         //given
         String guessNumber = "2143";
-        GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
@@ -74,7 +71,6 @@ public class GuessGameTest  {
     void should_return_0A2B_when_guessGame_given_answer_1234_and_guess_number_2849() {
         //given
         String guessNumber = "2143";
-        GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
@@ -85,7 +81,6 @@ public class GuessGameTest  {
     void should_return_0A0B_when_guessGame_given_answer_1234_and_guess_number_5678() {
         //given
         String guessNumber = "5678";
-        GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
