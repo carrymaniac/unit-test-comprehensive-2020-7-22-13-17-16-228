@@ -27,7 +27,7 @@ public class RandomAnswerGenerater implements AnswerGenerater {
             Random random = new Random(System.currentTimeMillis());
             Integer integer = list.get(random.nextInt(list.size() - 1));
             result +=integer;
-            list.remove(random);
+            list.remove(integer);
         }
         return result;
     }
