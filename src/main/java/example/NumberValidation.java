@@ -12,6 +12,11 @@ package example;
 public class NumberValidation implements Validation {
     @Override
     public boolean validate(String string) {
-        return true;
+        try{
+            Integer.parseInt(string);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }
