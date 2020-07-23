@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
  * @Date: 2020/7/23 5:53 下午
  * @Version:
  */
-public class GuessGameTest {
+public class GuessGameTest  {
     @Test
     void should_return_4A0B_when_guessGame_given_answer_1234_and_guess_number_1234() {
 

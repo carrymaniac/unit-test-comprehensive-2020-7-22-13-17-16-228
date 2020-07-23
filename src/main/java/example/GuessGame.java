@@ -16,6 +16,9 @@ public class GuessGame {
     }
 
     public String guess(String guessNumber) {
+        if(guessNumber.equals(answer)){
+            return "4A0B";
+        }
         return null;
     }
 }
