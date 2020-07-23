@@ -14,6 +14,9 @@ public class NumberValidation implements Validation {
     public boolean validate(String string) {
         try{
             Integer.parseInt(string);
+            if(string.length()!=4){
+                return false;
+            }
             return true;
         }catch (Exception e){
             return false;
