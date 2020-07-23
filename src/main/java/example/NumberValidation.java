@@ -1,5 +1,9 @@
 package example;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @ProjectName: unit-test-comprehensive
  * @Package: example
@@ -15,6 +19,9 @@ public class NumberValidation implements Validation {
         try{
             Integer.parseInt(string);
             if(string.length()!=4){
+                return false;
+            }
+            if(new HashSet(Arrays.asList(string.split(""))).size()<4){
                 return false;
             }
             return true;
