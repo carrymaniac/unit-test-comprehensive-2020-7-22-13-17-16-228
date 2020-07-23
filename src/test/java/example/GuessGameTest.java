@@ -50,9 +50,24 @@ public class GuessGameTest  {
 
     @Test
     void should_return_1A1B_when_guessGame_given_answer_1234_and_guess_number_1526() {
+        //given
         String guessNumber = "1526";
         GuessGame guessGame = new GuessGame(answerGenerater);
+        //when
         String actual = guessGame.guess(guessNumber);
+        //then
         assertEquals("1A1B",actual);
     }
+
+    @Test
+    void should_return_0A4B_when_guessGame_given_answer_1234_and_guess_number_2143() {
+        //given
+        String guessNumber = "2143";
+        GuessGame guessGame = new GuessGame(answerGenerater);
+        //when
+        String actual = guessGame.guess(guessNumber);
+        //then
+        assertEquals("0A4B",actual);
+    }
+
 }
