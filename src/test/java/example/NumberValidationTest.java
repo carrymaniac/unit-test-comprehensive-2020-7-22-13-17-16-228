@@ -38,4 +38,12 @@ public class NumberValidationTest {
         assertEquals(false,actual);
     }
 
+    @Test
+    void should_return_true_when_NumberValidation_validate_given_1234() {
+        String number = "1234";
+        Validation numberValidation = new NumberValidation();
+        boolean actual = numberValidation.validate(number);
+        assertEquals(true,actual);
+    }
+
 }
