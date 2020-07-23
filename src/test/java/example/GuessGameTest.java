@@ -80,4 +80,15 @@ public class GuessGameTest  {
         //then
         assertEquals("0A4B",actual);
     }
+
+    @Test
+    void should_return_0A0B_when_guessGame_given_answer_1234_and_guess_number_5678() {
+        //given
+        String guessNumber = "5678";
+        GuessGame guessGame = new GuessGame(answerGenerater);
+        //when
+        String actual = guessGame.guess(guessNumber);
+        //then
+        assertEquals("0A0B",actual);
+    }
 }
