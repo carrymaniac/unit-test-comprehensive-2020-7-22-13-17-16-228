@@ -28,4 +28,14 @@ public class RandomAnswerGeneraterTest {
             Integer.valueOf(actual);
         });
     }
+
+    @Test
+    void should_return_4_length_and_unduplicated_number_when_RandomAnswerGenerater_generate_given_nothing() {
+        //given
+        AnswerGenerater randomAnswerGenerater = new RandomAnswerGenerater();
+        //when
+        String actual = randomAnswerGenerater.generate();
+        //then
+        assertEquals(4,new HashSet<String>(Arrays.asList(actual.split(""))).size());
+    }
 }
