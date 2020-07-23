@@ -1,5 +1,7 @@
 package example;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -16,19 +18,33 @@ import static org.mockito.Mockito.when;
  * @Version:
  */
 public class GuessGameTest  {
+    AnswerGenerater answerGenerater;
+    @BeforeEach
+    void initAnswerGenerater(){
+        answerGenerater = Mockito.mock(AnswerGenerater.class);
+        when(answerGenerater.generate()).thenReturn("1234");
+    }
+
     @Test
     void should_return_4A0B_when_guessGame_given_answer_1234_and_guess_number_1234() {
-
         //given
         String guessNumber = "1234";
-        String answer = "1234";
-        AnswerGenerater answerGenerater = Mockito.mock(AnswerGenerater.class);
-        when(answerGenerater.generate()).thenReturn("1234");
         //when
         GuessGame guessGame = new GuessGame(answerGenerater);
         String actual = guessGame.guess(guessNumber);
         //then
         String expected = "4A0B";
         assertEquals(expected,actual);
+    }
+
+    @Test
+    void should_return_1A3B_when_guessGame_given_answer_1234_and_guess_number_1324() {
+        //given
+        String guessNumber = "1324";
+        GuessGame guessGame = new GuessGame(answerGenerater);
+        //when
+        String actual = guessGame.guess(guessNumber);
+        //then
+        assertEquals("1A3B",actual);
     }
 }
