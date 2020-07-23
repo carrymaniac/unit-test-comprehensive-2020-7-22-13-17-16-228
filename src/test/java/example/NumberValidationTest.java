@@ -23,4 +23,12 @@ public class NumberValidationTest {
         assertEquals(false,actual);
     }
 
+    @Test
+    void should_return_false_when_NumberValidation_validate_given_12() {
+        String number = "12";
+        Validation numberValidation = new NumberValidation();
+        boolean actual = numberValidation.validate(number);
+        assertEquals(false,actual);
+    }
+
 }
