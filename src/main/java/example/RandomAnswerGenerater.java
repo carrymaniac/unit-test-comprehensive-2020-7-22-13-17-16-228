@@ -1,5 +1,10 @@
 package example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+
 /**
  * @ProjectName: unit-test-comprehensive
  * @Package: example
@@ -12,6 +17,18 @@ package example;
 public class RandomAnswerGenerater implements AnswerGenerater {
     @Override
     public String generate() {
-        return "";
+        Integer[] array = {0,1,2,3,4,5,6,7,8,9};
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i:array){
+            list.add(i);
+        }
+        String result = "";
+        for(int i = 0;i<4;i++){
+            Random random = new Random(System.currentTimeMillis());
+            Integer integer = list.get(random.nextInt(list.size() - 1));
+            result +=integer;
+            list.remove(random);
+        }
+        return result;
     }
 }
