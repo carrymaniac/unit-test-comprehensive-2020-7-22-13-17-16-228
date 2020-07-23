@@ -30,5 +30,12 @@ public class NumberValidationTest {
         boolean actual = numberValidation.validate(number);
         assertEquals(false,actual);
     }
+    @Test
+    void should_return_false_when_NumberValidation_validate_given_1111() {
+        String number = "1111";
+        Validation numberValidation = new NumberValidation();
+        boolean actual = numberValidation.validate(number);
+        assertEquals(false,actual);
+    }
 
 }
