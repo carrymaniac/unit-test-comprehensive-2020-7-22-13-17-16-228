@@ -1,5 +1,9 @@
 package example;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @ProjectName: unit-test-comprehensive
  * @Package: example
@@ -19,6 +23,22 @@ public class GuessGame {
         if(guessNumber.equals(answer)){
             return "4A0B";
         }
-        return null;
+        String[] guessArray = guessNumber.split("");
+        String[] answerArray = answer.split("");
+        Set answerSet = new HashSet(Arrays.asList(answerArray));
+        Integer B = 0;
+        for(int i = 0;i<guessArray.length;i++){
+            if (answerSet.contains(guessArray[i])){
+                B++;
+            }
+        }
+        Integer A = 0;
+        for(int i =0;i<answerArray.length;i++){
+            if(guessArray[i].equals(answerArray[i])){
+                A++;
+                B--;
+            }
+        }
+        return String.format("%sA%sB",A,B);
     }
 }
