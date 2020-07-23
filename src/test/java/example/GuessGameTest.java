@@ -38,13 +38,13 @@ public class GuessGameTest  {
     }
 
     @Test
-    void should_return_1A3B_when_guessGame_given_answer_1234_and_guess_number_1324() {
+    void should_return_2A2B_when_guessGame_given_answer_1234_and_guess_number_1324() {
         //given
         String guessNumber = "1324";
         GuessGame guessGame = new GuessGame(answerGenerater);
         //when
         String actual = guessGame.guess(guessNumber);
         //then
-        assertEquals("1A3B",actual);
+        assertEquals("2A2B",actual);
     }
 }
