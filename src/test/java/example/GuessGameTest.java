@@ -17,14 +17,14 @@ import static org.mockito.Mockito.when;
  * @Version:
  */
 public class GuessGameTest  {
-    AnswerGenerater answerGenerater;
+    AnswerGenerator answerGenerator;
     GuessGame guessGame;
 
     @BeforeEach
-    void initAnswerGenerater(){
-        answerGenerater = Mockito.mock(AnswerGenerater.class);
-        when(answerGenerater.generate()).thenReturn("1234");
-        guessGame = new GuessGame(answerGenerater);
+    void initAnswerGenerator(){
+        answerGenerator = Mockito.mock(AnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn("1234");
+        guessGame = new GuessGame(answerGenerator);
     }
 
     @Test

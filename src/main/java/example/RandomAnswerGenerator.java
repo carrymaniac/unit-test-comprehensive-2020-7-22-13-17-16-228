@@ -1,8 +1,6 @@
 package example;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Random;
 
 /**
@@ -14,7 +12,7 @@ import java.util.Random;
  * @Date: 2020/7/23 7:25 下午
  * @Version:
  */
-public class RandomAnswerGenerater implements AnswerGenerater {
+public class RandomAnswerGenerator implements AnswerGenerator {
     @Override
     public String generate() {
         Integer[] array = {0,1,2,3,4,5,6,7,8,9};

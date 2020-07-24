@@ -15,8 +15,8 @@ import java.util.Set;
  */
 public class GuessGame {
     private String answer;
-    public GuessGame(AnswerGenerater answerGenerater) {
-        this.answer = answerGenerater.generate();
+    public GuessGame(AnswerGenerator answerGenerator) {
+        this.answer = answerGenerator.generate();
     }
 
     public String guess(String guessNumber) {
