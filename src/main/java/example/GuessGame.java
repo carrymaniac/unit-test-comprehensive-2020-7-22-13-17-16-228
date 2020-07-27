@@ -14,6 +14,7 @@ import java.util.Set;
  * @Version:
  */
 public class GuessGame {
+    private static final String CORRECT_RESULT = "4A0B";
     private String answer;
     public GuessGame(AnswerGenerator answerGenerator) {
         this.answer = answerGenerator.generate();
@@ -21,7 +22,7 @@ public class GuessGame {
 
     public String guess(String guessNumber) {
         if(guessNumber.equals(answer)){
-            return "4A0B";
+            return CORRECT_RESULT;
         }
         String[] guessArray = guessNumber.split("");
         String[] answerArray = answer.split("");
