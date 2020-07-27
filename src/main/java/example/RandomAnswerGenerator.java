@@ -15,11 +15,14 @@ import java.util.Set;
  * @Version:
  */
 public class RandomAnswerGenerator implements AnswerGenerator {
+
+    private static final int ANSWER_LENGTH = 4;
+
     @Override
     public String generate() {
         Set<Integer> answer = new HashSet<>();
         StringBuilder stringBuilder = new StringBuilder();
-        while (answer.size() < 4) {
+        while (answer.size() < ANSWER_LENGTH) {
             Integer ans = (int) (Math.random() * 10);
             if (!answer.contains(ans)) {
                 stringBuilder.append(ans);
