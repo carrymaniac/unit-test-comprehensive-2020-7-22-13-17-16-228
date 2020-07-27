@@ -20,15 +20,15 @@ public class RandomAnswerGenerator implements AnswerGenerator {
 
     @Override
     public String generate() {
-        Set<Integer> answer = new HashSet<>();
-        StringBuilder stringBuilder = new StringBuilder();
-        while (answer.size() < ANSWER_LENGTH) {
-            Integer ans = (int) (Math.random() * 10);
-            if (!answer.contains(ans)) {
-                stringBuilder.append(ans);
+        Set<Integer> answerSet = new HashSet<>();
+        StringBuilder answerStringBuilder = new StringBuilder();
+        while (answerSet.size() < ANSWER_LENGTH) {
+            Integer randomNumber = (int) (Math.random() * 10);
+            if (!answerSet.contains(randomNumber)) {
+                answerStringBuilder.append(randomNumber);
             }
-            answer.add(ans);
+            answerSet.add(randomNumber);
         }
-        return stringBuilder.toString();
+        return answerStringBuilder.toString();
     }
 }
