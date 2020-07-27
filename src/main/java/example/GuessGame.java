@@ -45,7 +45,7 @@ public class GuessGame {
     }
 
     private Integer calculateNumberOfCorrectNumber(String[] guessArray, String[] answerArray) {
-        Set answerSet = new HashSet(Arrays.asList(answerArray));
+        Set answerSet = new HashSet<>(Arrays.asList(answerArray));
         Integer numberOfCorrectNumber = 0;
         for (int i = 0; i < guessArray.length; i++) {
             if (answerSet.contains(guessArray[i])) {
