@@ -27,13 +27,7 @@ public class GuessGame {
         }
         String[] guessArray = guessNumber.split("");
         String[] answerArray = answer.split("");
-        Set answerSet = new HashSet(Arrays.asList(answerArray));
-        Integer numberOfCorrectNumber = 0;
-        for (int i = 0; i < guessArray.length; i++) {
-            if (answerSet.contains(guessArray[i])) {
-                numberOfCorrectNumber++;
-            }
-        }
+        Integer numberOfCorrectNumber = calculateNumberOfCorrectNumber(guessArray, answerArray);
         Integer numberOfCorrectPosition = 0;
         for (int i = 0; i < answerArray.length; i++) {
             if (guessArray[i].equals(answerArray[i])) {
@@ -42,5 +36,16 @@ public class GuessGame {
             }
         }
         return String.format("%sA%sB", numberOfCorrectPosition, numberOfCorrectNumber);
+    }
+
+    private Integer calculateNumberOfCorrectNumber(String[] guessArray, String[] answerArray) {
+        Set answerSet = new HashSet(Arrays.asList(answerArray));
+        Integer numberOfCorrectNumber = 0;
+        for (int i = 0; i < guessArray.length; i++) {
+            if (answerSet.contains(guessArray[i])) {
+                numberOfCorrectNumber++;
+            }
+        }
+        return numberOfCorrectNumber;
     }
 }
