@@ -2,7 +2,7 @@ package example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @ProjectName: unit-test-comprehensive
@@ -20,7 +20,7 @@ public class NumberValidationTest {
         String number = "abcd";
         Validation numberValidation = new NumberValidation();
         boolean actual = numberValidation.validate(number);
-        assertEquals(false,actual);
+        assertFalse(actual);
     }
 
     @Test
@@ -28,14 +28,14 @@ public class NumberValidationTest {
         String number = "12";
         Validation numberValidation = new NumberValidation();
         boolean actual = numberValidation.validate(number);
-        assertEquals(false,actual);
+        assertFalse(actual);
     }
     @Test
     void should_return_false_when_NumberValidation_validate_given_1111() {
         String number = "1111";
         Validation numberValidation = new NumberValidation();
         boolean actual = numberValidation.validate(number);
-        assertEquals(false,actual);
+        assertFalse(actual);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class NumberValidationTest {
         String number = "1234";
         Validation numberValidation = new NumberValidation();
         boolean actual = numberValidation.validate(number);
-        assertEquals(true,actual);
+        assertTrue(actual);
     }
 
 }
