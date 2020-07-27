@@ -1,5 +1,8 @@
 package example;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,10 +18,13 @@ import java.util.Set;
  */
 public class GuessGame {
     private static final String CORRECT_RESULT = "4A0B";
+    private static final String WRONG_MESSAGE = "Wrong Input，Input again";
     private String answer;
+    private Validation validation;
 
-    public GuessGame(AnswerGenerator answerGenerator) {
+    public GuessGame(AnswerGenerator answerGenerator, Validation validation) {
         this.answer = answerGenerator.generate();
+        this.validation = validation;
     }
 
     public String guess(String guessNumber) {
@@ -49,7 +55,22 @@ public class GuessGame {
         return numberOfCorrectNumber;
     }
 
-    public void play() {
-
+    public void play() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        for (int guessTime = 0; guessTime < 6; guessTime++) {
+            System.out.print("Please enter your answer:");
+            String guess = br.readLine();
+            String thisGuessResult = guess(guess);
+            if (validation.validate(guess)) {
+                System.out.println(thisGuessResult);
+            } else {
+                System.out.println(WRONG_MESSAGE);
+            }
+            if (CORRECT_RESULT.equals(thisGuessResult)) {
+                System.out.print("You win!\r\n");
+                return;
+            }
+        }
+        System.out.println("You lose!");
     }
 }

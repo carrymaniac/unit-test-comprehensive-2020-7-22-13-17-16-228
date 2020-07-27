@@ -6,6 +6,7 @@ import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,12 +25,14 @@ import static org.mockito.Mockito.when;
 public class GuessGameTest  {
     AnswerGenerator answerGenerator;
     GuessGame guessGame;
+    Validation validation;
 
     @BeforeEach
     void initAnswerGenerator(){
         answerGenerator = Mockito.mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn("1234");
-        guessGame = new GuessGame(answerGenerator);
+        validation = new NumberValidation();
+        guessGame = new GuessGame(answerGenerator,validation);
     }
 
     @Test
@@ -93,7 +96,7 @@ public class GuessGameTest  {
     }
 
     @Test
-    void should_win_the_game_when_plaY_given_some_number() {
+    void should_win_the_game_when_plaY_given_some_number() throws IOException {
         //given
         String inputMessage = "1230\n"
                 + "2323\n"
@@ -108,7 +111,6 @@ public class GuessGameTest  {
         //when
         guessGame.play();
 
-        //then
         //then
         assertTrue(outContent.toString().endsWith("You win!\r\n"));
     }
