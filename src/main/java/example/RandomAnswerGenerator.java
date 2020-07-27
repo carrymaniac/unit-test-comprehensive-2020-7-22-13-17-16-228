@@ -1,7 +1,9 @@
 package example;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * @ProjectName: unit-test-comprehensive
@@ -15,18 +17,15 @@ import java.util.Random;
 public class RandomAnswerGenerator implements AnswerGenerator {
     @Override
     public String generate() {
-        Integer[] array = {0,1,2,3,4,5,6,7,8,9};
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int i:array){
-            list.add(i);
+        Set<Integer> answer = new HashSet<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        while (answer.size() < 4) {
+            Integer ans = (int) (Math.random() * 10);
+            if (!answer.contains(ans)) {
+                stringBuilder.append(ans);
+            }
+            answer.add(ans);
         }
-        String result = "";
-        for(int i = 0;i<4;i++){
-            Random random = new Random(System.currentTimeMillis());
-            Integer integer = list.get(random.nextInt(list.size() - 1));
-            result +=integer;
-            list.remove(integer);
-        }
-        return result;
+        return stringBuilder.toString();
     }
 }
