@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
@@ -85,5 +90,26 @@ public class GuessGameTest  {
         String actual = guessGame.guess(guessNumber);
         //then
         assertEquals("0A0B",actual);
+    }
+
+    @Test
+    void should_win_the_game_when_plaY_given_some_number() {
+        //given
+        String inputMessage = "1230\n"
+                + "2323\n"
+                + "1450\n"
+                + "7891\n"
+                + "1467\n"
+                + "1234";
+        System.setIn(new ByteArrayInputStream(inputMessage.getBytes()));
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        //when
+        guessGame.play();
+
+        //then
+        //then
+        assertTrue(outContent.toString().endsWith("You win!\r\n"));
     }
 }

@@ -48,4 +48,8 @@ public class GuessGame {
         }
         return numberOfCorrectNumber;
     }
+
+    public void play() {
+
+    }
 }
