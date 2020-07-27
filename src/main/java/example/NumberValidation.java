@@ -20,8 +20,7 @@ public class NumberValidation implements Validation {
     public boolean validate(String string) {
         try {
             Integer.parseInt(string);
-            if (isLengthEqual4(string)) return false;
-            if (isUnduplicated(string)) return false;
+            if (isLengthEqual4(string)||isUnduplicated(string)) return false;
             return true;
         } catch (Exception e) {
             return false;
