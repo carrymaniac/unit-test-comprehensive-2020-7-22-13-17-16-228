@@ -20,15 +20,22 @@ public class NumberValidation implements Validation {
     public boolean validate(String string) {
         try {
             Integer.parseInt(string);
-            if (string.length() != NUMBER_LENGTH) {
-                return false;
-            }
-            if (new HashSet(Arrays.asList(string.split(""))).size() < NUMBER_LENGTH) {
-                return false;
-            }
+            if (isLengthEqual4(string)) return false;
+            if (isUnduplicated(string)) return false;
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    private boolean isUnduplicated(String string) {
+        return new HashSet(Arrays.asList(string.split(""))).size() < NUMBER_LENGTH;
+    }
+
+    private boolean isLengthEqual4(String string) {
+        if (string.length() != NUMBER_LENGTH) {
+            return true;
+        }
+        return false;
     }
 }
