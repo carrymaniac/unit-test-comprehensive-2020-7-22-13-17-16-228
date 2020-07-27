@@ -19,6 +19,7 @@ import java.util.Set;
 public class GuessGame {
     private static final String CORRECT_RESULT = "4A0B";
     private static final String WRONG_MESSAGE = "Wrong Input，Input again";
+    private static final int CHANGE_NUM = 6;
     private final String answer;
     private final Validation validation;
 
@@ -57,7 +58,7 @@ public class GuessGame {
 
     public void play() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        for (int guessTime = 0; guessTime < 6; guessTime++) {
+        for (int guessTime = 0; guessTime < CHANGE_NUM; guessTime++) {
             System.out.print("Please enter your answer:");
             String guess = br.readLine();
             String thisGuessResult = guess(guess);
