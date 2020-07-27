@@ -2,7 +2,6 @@ package example;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @ProjectName: unit-test-comprehensive
@@ -14,18 +13,21 @@ import java.util.Set;
  * @Version:
  */
 public class NumberValidation implements Validation {
+
+    private static final int NUMBER_LENGTH = 4;
+
     @Override
     public boolean validate(String string) {
-        try{
+        try {
             Integer.parseInt(string);
-            if(string.length()!=4){
+            if (string.length() != NUMBER_LENGTH) {
                 return false;
             }
-            if(new HashSet(Arrays.asList(string.split(""))).size()<4){
+            if (new HashSet(Arrays.asList(string.split(""))).size() < NUMBER_LENGTH) {
                 return false;
             }
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
