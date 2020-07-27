@@ -16,30 +16,31 @@ import java.util.Set;
 public class GuessGame {
     private static final String CORRECT_RESULT = "4A0B";
     private String answer;
+
     public GuessGame(AnswerGenerator answerGenerator) {
         this.answer = answerGenerator.generate();
     }
 
     public String guess(String guessNumber) {
-        if(guessNumber.equals(answer)){
+        if (guessNumber.equals(answer)) {
             return CORRECT_RESULT;
         }
         String[] guessArray = guessNumber.split("");
         String[] answerArray = answer.split("");
         Set answerSet = new HashSet(Arrays.asList(answerArray));
-        Integer B = 0;
-        for(int i = 0;i<guessArray.length;i++){
-            if (answerSet.contains(guessArray[i])){
-                B++;
+        Integer numberOfCorrectNumber = 0;
+        for (int i = 0; i < guessArray.length; i++) {
+            if (answerSet.contains(guessArray[i])) {
+                numberOfCorrectNumber++;
             }
         }
-        Integer A = 0;
-        for(int i =0;i<answerArray.length;i++){
-            if(guessArray[i].equals(answerArray[i])){
-                A++;
-                B--;
+        Integer numberOfCorrectPosition = 0;
+        for (int i = 0; i < answerArray.length; i++) {
+            if (guessArray[i].equals(answerArray[i])) {
+                numberOfCorrectPosition++;
+                numberOfCorrectNumber--;
             }
         }
-        return String.format("%sA%sB",A,B);
+        return String.format("%sA%sB", numberOfCorrectPosition, numberOfCorrectNumber);
     }
 }
