@@ -19,8 +19,8 @@ import java.util.Set;
 public class GuessGame {
     private static final String CORRECT_RESULT = "4A0B";
     private static final String WRONG_MESSAGE = "Wrong Input，Input again";
-    private String answer;
-    private Validation validation;
+    private final String answer;
+    private final Validation validation;
 
     public GuessGame(AnswerGenerator answerGenerator, Validation validation) {
         this.answer = answerGenerator.generate();
